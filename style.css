@@ -4,6 +4,7 @@ body {
 }
 * {
   box-sizing: border-box;
+  background-color: #f2f0f0;
 }
 .title {
   font-family: 'Times New Roman', Times, serif;

@@ -85,6 +85,10 @@ function generatePairs() {
   const cannotPairConstraints = cannotPairArray.filter(
     pair => pair.trim() !== ''
   );
+  if (numNames < roomSize) {
+    alert('Not enough students for this room');
+    return;
+  }
   if (checkConstraints(namesArray, roomSize, cannotPairConstraints)) {
     alert('Restricted pairings identified in the list.');
     return;
