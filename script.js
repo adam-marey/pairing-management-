@@ -90,7 +90,7 @@ function toggleConstraints() {
     toggleConstraintsBtn.textContent = 'Hide Pair Constraints';
   } else {
     constraintsField.style.display = 'none';
-    toggleConstraintsBtn.textContent = 'Show Pair Constraints';
+    toggleConstraintsBtn.textContent = '🔍 Show Pair Constraints';
   }
 }
 
