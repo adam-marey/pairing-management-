@@ -353,11 +353,9 @@ function storeLastGenerated() {
   displayLastGenerated();
 }
 
-// Update this part of the code
 generateBtn.addEventListener('click', () => {
   generatePairs();
   storeLastGenerated();
 });
 
-// Add this line at the end
 displayLastGenerated();
