@@ -103,6 +103,10 @@ constraintsField.style.display = 'none';
 
 function copyOutput() {
   const outputField = document.getElementById('output-field');
+  if (outputField.value.trim() === '') {
+    alert('Collection is empty!');
+    return;
+  }
   outputField.select();
   outputField.setSelectionRange(0, 99999);
 
