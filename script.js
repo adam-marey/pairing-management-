@@ -357,12 +357,3 @@ generateBtn.addEventListener('click', () => {
 
 // Add this line at the end
 displayLastGenerated();
-
-// // Generate the pairs string
-// rooms.forEach((room, index) => {
-//   pairsString += `🚪 Room ${index + 1}\n`;
-//   room.forEach(name => {
-//     pairsString += `👤 ${name}\n`;
-//   });
-//   pairsString += '\n';
-// });
