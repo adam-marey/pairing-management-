@@ -18,10 +18,22 @@
   <div class="container">
     <h1 class="title">Random Pairs Generator</h1>
     <class class="form-output-wrapper">
-      <div class="form-group">
-        <label for="names-input"><strong>Enter Students Names</strong></label>
-        <textarea id="names-input" rows="40" cols="30"></textarea>
-        <button class="copy-btn" id="clear-input-btn">Clear Input</button>
+      <div class="form-group" style="
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+        
+        ">
+        <label for="names-input"><strong>Enter Students Names </strong></label>
+        <textarea id="names-input" rows="40" cols="45"></textarea>
+        <div style="
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+        ">
+        
+        <button class="copy-btn" id="clear-input-btn">🗑️ Clear Input</button>
+      </div>
       </div>
   
       <div class="form-group">
@@ -29,15 +41,34 @@
         <input type="number" id="room-size" name="room-size" value="2" min="1" max="25">
       </div>
       <div class="middle-container">
-        <button class="button" id="generate-btn">Generate Pairs</button>
+        <button class="button" id="generate-btn">⚙️ Generate Pairs</button>
         <div id="num-rooms-text"></div>
       </div>
       
       
-      <div class="output-group">
+      <div class="output-group" style="
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+        
+        ">
+        
         <label for="output-field"><strong>Collection of pairs</strong></label>
-        <textarea id="output-field" rows="40" cols="30" readonly></textarea>
-        <button class="copy-btn" id="copy-btn">Copy Pairs</button>
+        <textarea id="output-field" rows="40" cols="45" readonly></textarea>
+        <div style="
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+        
+        ">
+          <button style="
+          white-space: nowrap;
+          " class="copy-btn" id="copy-btn">📋 Copy Pairs</button>
+          <button style="
+          white-space: nowrap;
+          "  class="copy-btn" id="download-csv-btn">📥 Download CSV</button>
+        </div>
+
 <p class="date-time"><strong>Latest Creation:</strong> <span id="last-generated"></span></p>
 
       </div>
@@ -48,14 +79,13 @@
     </div>
   </div>
 </div>
-<div></div>
 <div class="constraints-section">
   <div>
     <button class="copy-btn"id="toggle-constraints-btn">Show Pair Constraints</button>
-    <button class="copy-btn" id="clear-constraints-btn">Clear Constraints</button>
+    <button class="copy-btn" id="clear-constraints-btn">🗑️ Clear Constraints</button>
 
   </div>
-    <p>Specify individuals who must not be paired together:</p>
+    <p><strong>Specify individuals who must not be paired together:</strong></p>
     <textarea id="cannot-pair-input" rows="10" cols="50" placeholder="Name1, Name2"></textarea>
   </div>
 </body>

@@ -26,10 +26,57 @@ clearConstraintsBtn.addEventListener('click', clearConstraints);
 function clearConstraints() {
   const constraintsField = document.getElementById('cannot-pair-input');
   constraintsField.value = '';
-  localStorage.clear();
 }
 
 // --------------------------------------------------
+
+// -------------------------CSV Download-----------------------
+const downloadCsvBtn = document.getElementById('download-csv-btn');
+downloadCsvBtn.addEventListener('click', downloadCsv);
+
+function downloadCsv() {
+  const outputField = document.getElementById('output-field');
+  const pairs = outputField.value.split('\n');
+  let csvContent = 'data:text/csv;charset=utf-8,Room,';
+  let roomNumber = '';
+
+  const roomData = {};
+
+  pairs.forEach(pair => {
+    if (pair.startsWith('🚪')) {
+      roomNumber = pair.replace('🚪 Room', '').trim();
+      roomData[roomNumber] = [];
+    } else if (pair.startsWith('👤')) {
+      const name = pair.replace('👤', '').trim();
+      if (name !== '') {
+        roomData[roomNumber].push(name);
+      }
+    }
+  });
+
+  const maxGroupSize = Math.max(
+    ...Object.values(roomData).map(group => group.length)
+  );
+
+  for (let i = 0; i < maxGroupSize; i++) {
+    csvContent += `Name ${i + 1},`;
+  }
+
+  csvContent = csvContent.slice(0, -1) + '\n';
+
+  for (const [room, names] of Object.entries(roomData)) {
+    csvContent += `${room},`;
+    csvContent += names.join(',') + '\n';
+  }
+
+  const encodedUri = encodeURI(csvContent);
+  const link = document.createElement('a');
+  link.setAttribute('href', encodedUri);
+  link.setAttribute('download', 'pairs.csv');
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
 
 // -------------------------toggleConstraintsBtn-----------------------
 
@@ -98,6 +145,7 @@ function generatePairs() {
   const cannotPairConstraints = cannotPairArray.filter(
     pair => pair.trim() !== ''
   );
+
   if (numNames === 0) {
     alert('No students entered');
     return;
@@ -115,12 +163,10 @@ function generatePairs() {
   const rooms = Array.from({ length: numRooms }, () => []);
 
   function isValidRoom(room, name) {
-    // Check if the student is already in the room
     if (room.includes(name)) {
       return false;
     }
 
-    // Check if the student is part of a constraint pair
     for (const constraint of cannotPairConstraints) {
       const [name1, name2] = constraint.split(',').map(name => name.trim());
       if (name === name1 && room.includes(name2)) {
@@ -131,31 +177,56 @@ function generatePairs() {
       }
     }
 
-    // No constraint violation found
     return true;
   }
 
-  // Shuffle the names array
-  namesArray = shuffleArray(namesArray);
+  let attempts = 0;
+  while (true) {
+    attempts += 1;
+    if (attempts > 1000) {
+      alert(
+        'Unable to generate pairs with the current constraints. Please try again or adjust the constraints.'
+      );
+      return;
+    }
 
-  // Assign names to rooms
-  for (const name of namesArray) {
-    let roomFound = false;
-    while (!roomFound) {
-      // Shuffle the rooms array
-      rooms.sort(() => Math.random() - 0.5);
+    namesArray = shuffleArray(namesArray);
 
-      for (const room of rooms) {
-        if (room.length < roomSize && isValidRoom(room, name)) {
-          room.push(name);
-          roomFound = true;
-          break;
+    let allNamesAssigned = true;
+    for (const name of namesArray) {
+      let roomFound = false;
+      let roomSearchAttempts = 0;
+      while (!roomFound && roomSearchAttempts < numRooms * 2) {
+        rooms.sort(() => Math.random() - 0.5);
+
+        for (const room of rooms) {
+          if (room.length < roomSize && isValidRoom(room, name)) {
+            room.push(name);
+            roomFound = true;
+            break;
+          }
         }
+
+        roomSearchAttempts += 1;
       }
+
+      if (!roomFound) {
+        allNamesAssigned = false;
+        break;
+      }
+    }
+
+    if (
+      allNamesAssigned &&
+      !checkConstraints(rooms, roomSize, cannotPairConstraints)
+    ) {
+      break;
+    } else {
+      // Reset the rooms to start the pairing process again
+      rooms.forEach(room => room.splice(0, room.length));
     }
   }
 
-  // Generate the pairs string
   rooms.forEach((room, index) => {
     pairsString += `🚪 Room ${index + 1}\n`;
     room.forEach(name => {
@@ -164,22 +235,17 @@ function generatePairs() {
     pairsString += '\n';
   });
 
-  // Update the output field
   const outputField = document.getElementById('output-field');
   outputField.value = pairsString;
 
-  // Save the output to local storage
   localStorage.setItem('output', pairsString);
 
-  // Update the number of rooms text
   const numRoomsText = document.getElementById('num-rooms-text');
   numRoomsText.textContent = `${numRooms} rooms needed`;
 
-  // Save the input data to local storage
   const timestamp = new Date().toLocaleString();
   saveData(namesInput, roomSize, cannotPairInput, timestamp);
 
-  // Update the last generated text
   updateLastGeneratedText(timestamp);
 }
 
@@ -291,3 +357,12 @@ generateBtn.addEventListener('click', () => {
 
 // Add this line at the end
 displayLastGenerated();
+
+// // Generate the pairs string
+// rooms.forEach((room, index) => {
+//   pairsString += `🚪 Room ${index + 1}\n`;
+//   room.forEach(name => {
+//     pairsString += `👤 ${name}\n`;
+//   });
+//   pairsString += '\n';
+// });
