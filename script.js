@@ -18,6 +18,17 @@ function clearInput() {
 
 // ----------clear btn-------------------------
 
+// ----------Clear Constraints-------------------------
+const clearConstraintsBtn = document.getElementById('clear-constraints-btn');
+clearConstraintsBtn.addEventListener('click', clearConstraints);
+
+function clearConstraints() {
+  const constraintsField = document.getElementById('cannot-pair-input');
+  constraintsField.value = '';
+}
+
+// --------------------------------------------------
+
 // -------------------------toggleConstraintsBtn-----------------------
 
 const toggleConstraintsBtn = document.getElementById('toggle-constraints-btn');
