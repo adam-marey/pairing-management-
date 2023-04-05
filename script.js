@@ -37,37 +37,20 @@ downloadCsvBtn.addEventListener('click', downloadCsv);
 function downloadCsv() {
   const outputField = document.getElementById('output-field');
   const pairs = outputField.value.split('\n');
-  let csvContent = 'data:text/csv;charset=utf-8,Room,';
-  let roomNumber = '';
+  let csvContent = 'data:text/csv;charset=utf-8,Room,Name\n';
 
-  const roomData = {};
+  let roomNumber = '';
 
   pairs.forEach(pair => {
     if (pair.startsWith('🚪')) {
       roomNumber = pair.replace('🚪 Room', '').trim();
-      roomData[roomNumber] = [];
     } else if (pair.startsWith('👤')) {
       const name = pair.replace('👤', '').trim();
       if (name !== '') {
-        roomData[roomNumber].push(name);
+        csvContent += `Room ${roomNumber},${name}\n`;
       }
     }
   });
-
-  const maxGroupSize = Math.max(
-    ...Object.values(roomData).map(group => group.length)
-  );
-
-  for (let i = 0; i < maxGroupSize; i++) {
-    csvContent += `Name ${i + 1},`;
-  }
-
-  csvContent = csvContent.slice(0, -1) + '\n';
-
-  for (const [room, names] of Object.entries(roomData)) {
-    csvContent += `${room},`;
-    csvContent += names.join(',') + '\n';
-  }
 
   const encodedUri = encodeURI(csvContent);
   const link = document.createElement('a');
