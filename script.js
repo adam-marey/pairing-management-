@@ -86,7 +86,7 @@ function generatePairs() {
     pair => pair.trim() !== ''
   );
   if (numNames < roomSize) {
-    alert('Not enough students for this room');
+    alert('The total number of students is less than the group size');
     return;
   }
   if (checkConstraints(namesArray, roomSize, cannotPairConstraints)) {
