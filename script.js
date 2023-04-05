@@ -14,6 +14,7 @@ clearInputBtn.addEventListener('click', clearInput);
 function clearInput() {
   const namesInput = document.getElementById('names-input');
   namesInput.value = '';
+  localStorage.clear();
 }
 
 // ----------clear btn-------------------------
@@ -25,6 +26,7 @@ clearConstraintsBtn.addEventListener('click', clearConstraints);
 function clearConstraints() {
   const constraintsField = document.getElementById('cannot-pair-input');
   constraintsField.value = '';
+  localStorage.clear();
 }
 
 // --------------------------------------------------
