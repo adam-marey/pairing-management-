@@ -89,9 +89,10 @@
 textarea {
   padding: 12px 20px;
   box-sizing: border-box;
-  border: 2px solid #ccc;
+  border: 6px solid #ccc;
   border-radius: 5px;
   background-color: #f5f5f5;
+  outline: none;
 }
 
 #cannot-pair-input {

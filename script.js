@@ -98,6 +98,10 @@ function generatePairs() {
   const cannotPairConstraints = cannotPairArray.filter(
     pair => pair.trim() !== ''
   );
+  if (numNames === 0) {
+    alert('No students entered');
+    return;
+  }
   if (numNames < roomSize) {
     alert('The total number of students is less than the group size');
     return;
