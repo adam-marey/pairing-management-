@@ -30,6 +30,13 @@ To access the live version of this app, [click here](https://pair-generator.netl
 6. Export the generated pairs to a `CSV` file by clicking `Download CSV.`
 7. Use the various buttons to `copy pairs`, `clear inputs`, and `toggle` constraints visibility.
 
+
+## Stretch Goals
+
+- Integrate the app with the institution's Learning Management System (LMS) to export real student data.
+- Create an algorithm to optimize pairings based on student feedback, performance and preferences.
+
+
 ## Contributing
 
 We welcome contributions to the Cohort Pair Generator project. If you'd like to contribute, please submit a pull request or open an issue on GitHub to discuss the proposed changes.
