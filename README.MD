@@ -1,27 +1,46 @@
-# pairing management 
+# Cohort Pair Generator
 
-- Generate pairs: The app allows users to input a list of names and a room size, and generates pairs of students that are assigned to rooms of the specified size.
+## Overview
 
-- Pair constraints: Users can specify pairs of students that cannot be paired together, and the app ensures that these constraints are not violated in the generated pairs.
+Cohort Pair Generator is a smart and user-friendly web application designed to streamline the process of creating random pairs or groups of students within a higher education environment. This application makes it easy to generate optimal academic pairings while considering various constraints, such as specific students not being able to work together. With an intuitive drag-and-drop interface, users can also adjust the pairs manually as needed. The generated pairs can be conveniently copied to the clipboard or exported as CSV files for seamless integration into other applications or workflows.
 
-- Clear input: A clear input button is provided to allow users to easily clear the input field.
+## Features
 
-- Toggle constraints: The app provides a button to toggle the visibility of the pair constraints input field.
+- Simple and intuitive interface for inputting student names and group sizes
+- Customizable pairing constraints for students who cannot work together
+- Intelligent random pair generation algorithm that considers constraints
+- Manual adjustment of pairs using a drag-and-drop interface
+- Export generated pairs as a CSV file for easy data sharing
+- Local storage integration to save and load input data and generated pairs
+- Responsive design for seamless use on various devices
+- Last Creation Tracking: The app keeps a record of the previously generated pairs, allowing mentors and instructors to easily track student pairing history. This ensures that students are consistently rotated and paired with different peers, promoting diverse collaboration and learning experiences
 
-- Copy output: Users can copy the generated pairs to the clipboard with the click of a button.
+## Getting Started
 
-- Save and load input and output data: The app saves the input data (names, room size, and pair constraints) and the generated pairs to local storage, and loads them on page load.
+To access the live version of this app, [click here](https://pair-generator.netlify.app/).
 
-- Last generated: The app displays the date and time of the last time the pairs were generated, and allows users to easily see when the pairs were last updated.
 
-- Room size calculation: The app automatically calculates the number of rooms needed based on the number of names and the specified room size.
+## Usage
 
-- Mobile-friendly: The app is optimized for mobile devices, with support for touch events and a responsive layout.
+1. Enter the student names, one per line, in the `Names` text area.
+2. Specify the desired group size in the `Group Size` input field.
+3. Optionally, add pairing constraints in the `Cannot Pair` text area, with each constraint followed by a comma `name1, name2`
+4. Click `Generate Pairs` to create random pairs/groups based on the input data and constraints.
+5. If needed, manually adjust the pairs using the `drag-and-drop` interface.
+6. Export the generated pairs to a `CSV` file by clicking `Download CSV.`
+7. Use the various buttons to `copy pairs`, `clear inputs`, and `toggle` constraints visibility.
 
-- Shuffle names: The app shuffles the input list of names to ensure that the generated pairs are randomized.
+## Contributing
 
-- Check constraints: The app checks if any of the pair constraints are violated in the input list of names before generating the pairs, and alerts the user if any constraints are found.
+We welcome contributions to the Cohort Pair Generator project. If you'd like to contribute, please submit a pull request or open an issue on GitHub to discuss the proposed changes.
 
-- Multiple pairings: The app supports generating multiple pairings in a single session, with each pairing saved to local storage.
+## License
 
-- Display last generated: The app displays the date and time of the last time the pairs were generated, even after the page is reloaded.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+
+
+## Contact
+
+If you have any questions, comments, or concerns, please feel free to contact me at [marey119988@gmail.com](mailto:marey119988@gmail.com). You can also visit my [LinkedIn](https://www.linkedin.com/in/sulaiman-marey/) to learn more about me and my other projects.
+
