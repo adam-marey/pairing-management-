@@ -477,6 +477,18 @@ outputField.addEventListener('drop', e => {
       alert('Constraints violation: These names cannot be in the same room.');
       targetRoom.removeChild(draggedElement);
       draggedRoom.appendChild(draggedElement);
+    } else {
+      const outputField = document.getElementById('output-field');
+      const rooms = [];
+
+      for (const room of outputField.children) {
+        const names = [];
+        for (const nameElement of room.getElementsByClassName('pair')) {
+          names.push(nameElement.textContent.trim().replace('👤', '').trim());
+        }
+        rooms.push(names);
+      }
+      localStorage.setItem('output', JSON.stringify(rooms));
     }
     storeLastGenerated();
   }
