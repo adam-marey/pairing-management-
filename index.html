@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- add an icon -->
-  <link rel="icon" href="coding.png" type="image/x-icon">  
+  <link rel="icon" href="coding.png" type="image/x-icon">
   <!-- add a description -->
   <meta name="description" content="Random Pairs Generator">
-  
+
 
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
   <title>Group Generator</title>
 </head>
+
 <body>
   <div class="container">
     <h1 class="title">Random Pairs Generator</h1>
@@ -31,11 +33,11 @@
         justify-content: space-between;
         margin-top: 10px;
         ">
-        
-      </div>
+
+        </div>
         <button class="copy-btn" id="clear-input-btn">🗑️ Clear Input</button>
       </div>
-  
+
       <div class="form-group">
         <label for="room-size"><strong>Select Group Size</strong></label>
         <input type="number" id="room-size" name="room-size" value="2" min="1" max="25">
@@ -44,17 +46,17 @@
         <button class="button" id="generate-btn">⚙️ Generate Pairs</button>
         <div id="num-rooms-text"></div>
       </div>
-      
-      
+
+
       <div class="output-group" style="
       display: flex;
       flex-direction: column;
       align-items: center;
         
         ">
-        
+
         <label for="output-field"><strong>Collection of pairs</strong></label>
-        <textarea id="output-field" rows="40" cols="45" readonly></textarea>
+        <div id="output-field" class="output-list"></div>
         <div style="
         display: flex;
         justify-content: space-between;
@@ -66,25 +68,25 @@
           " class="copy-btn" id="copy-btn">📋 Copy Pairs</button>
           <button style="
           white-space: nowrap;
-          "  class="copy-btn" id="download-csv-btn">📥 Download CSV</button>
+          " class="copy-btn" id="download-csv-btn">📥 Download CSV</button>
         </div>
 
-<p class="date-time"><strong>Latest Creation:</strong> <span id="last-generated"></span></p>
+        <p class="date-time"><strong>Latest Creation:</strong> <span id="last-generated"></span></p>
 
       </div>
     </class>
-    </div>
-    <div>
-      
-    </div>
   </div>
-</div>
-<div class="constraints-section">
   <div>
-    <button class="copy-btn"id="toggle-constraints-btn">🔍 Show Pair Constraints</button>
-    <button class="copy-btn" id="clear-constraints-btn">🗑️ Clear Constraints</button>
 
   </div>
+  </div>
+  </div>
+  <div class="constraints-section">
+    <div>
+      <button class="copy-btn" id="toggle-constraints-btn">🔍 Show Pair Constraints</button>
+      <button class="copy-btn" id="clear-constraints-btn">🗑️ Clear Constraints</button>
+
+    </div>
     <p><strong>Specify individuals who must not be paired together:</strong></p>
     <textarea id="cannot-pair-input" rows="10" cols="50" placeholder="Name1, Name2"></textarea>
   </div>
@@ -92,5 +94,5 @@
 <footer>
   <p><strong>Made with care by Adam Marey 🌟</strong></p>
 </footer>
-</html>
 
+</html>
