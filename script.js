@@ -478,6 +478,7 @@ outputField.addEventListener('drop', e => {
       targetRoom.removeChild(draggedElement);
       draggedRoom.appendChild(draggedElement);
     }
+    storeLastGenerated();
   }
 });
 
