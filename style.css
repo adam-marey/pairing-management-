@@ -421,3 +421,8 @@ label {
 .middle-container button {
   margin-bottom: 1rem;
 }
+
+#num-rooms-text {
+  margin-top: 0.5rem;
+  font-weight: bold;
+}

@@ -277,7 +277,7 @@ function generatePairs() {
   localStorage.setItem('output', JSON.stringify(rooms));
 
   const numRoomsText = document.getElementById('num-rooms-text');
-  numRoomsText.textContent = `${numRooms} rooms needed`;
+  numRoomsText.textContent = `${numRooms} Rooms Needed`;
 
   const timestamp = new Date().toLocaleString();
   saveData(namesInput, roomSize, cannotPairInput, timestamp);
