@@ -7,8 +7,25 @@
   background-color: #f2f0f0;
   font-family: 'Times New Roman', Times, serif;
 }
+.logo-info {
+  color: black;
+  font-size: 2rem;
+  margin: 0;
+  padding: 0;
+  font-family: cursive;
+}
+
+.logo {
+  /* background-color: black; */
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .title {
-  font-family: 'Times New Roman', Times, serif;
+  font-family: cursive;
   margin: 1rem 0;
 }
 .container {
@@ -41,6 +58,24 @@
   align-items: center;
   margin: 0 2rem;
 }
+.same-size-buttons {
+  background-color: black;
+  border: none;
+  color: #b2b2b2;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  border-radius: 8px;
+}
+.same-size-buttons:hover {
+  background-color: #aaa492;
+  color: white;
+}
 
 .button {
   background-color: black; /* Green */
@@ -58,10 +93,14 @@
 }
 
 .button:hover {
-  background-color: #008cba;
+  background-color: #aaa492;
   color: white;
 }
-
+.button,
+.copy-btn {
+  width: 200px;
+  padding: 15px 0;
+}
 .copy-btn {
   background-color: black;
   color: #b2b2b2;
@@ -75,6 +114,10 @@
   cursor: pointer;
   transition-duration: 0.4s;
   border-radius: 8px;
+}
+.copy-btn:hover {
+  background-color: #aaa492;
+  color: white;
 }
 
 .date-time {
@@ -99,8 +142,8 @@ textarea {
   width: 400px;
   height: 700px;
   padding: 10px;
-  border: 1px solid #ccc;
   overflow-y: scroll;
+  border: 6px solid #ccc;
 }
 
 .pair-container {
@@ -129,6 +172,13 @@ textarea {
 #cannot-pair-input {
   display: none;
 }
+label {
+  margin-bottom: 0.8rem;
+}
+
+#room-size {
+  margin-top: 0.5rem;
+}
 
 .show-hide-toggle {
   display: flex;
@@ -149,6 +199,7 @@ textarea {
   justify-content: center;
   display: flex;
   flex-direction: column;
+  border: 6px solid #ccc;
 }
 
 /* Media queries */
@@ -179,19 +230,17 @@ textarea {
   }
 
   footer {
-    margin-top: 1rem;
-    align-items: center;
-    justify-content: center;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+  }
+  footer p {
+    color: #777;
   }
 
-  footer p {
-    font-size: 12px;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
+  .fab.fa-github {
+    font-size: 30%;
   }
 
   /* Adjust textareas */
@@ -255,4 +304,120 @@ textarea {
       width: 30%;
     }
   }
+}
+
+/* Plus and Minus button styles */
+.number-input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+  width: 70%;
+  max-width: 1200px;
+}
+
+.number-input button {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: none;
+  background-color: #f2f0f0;
+  font-size: 20px;
+  color: #777;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  background-color: #d1d1d1;
+}
+
+.number-input button:hover {
+  background-color: #d1d1d1;
+}
+
+.number-input input[type=number] {
+  width: 60px;
+  height: 30px;
+  padding: 0;
+  border: none;
+  background-color: #f2f0f0;
+  font-size: 20px;
+  color: #7c7b7b;
+  text-align: center;
+  outline: none;
+}
+
+.number-input input[type=number]::-webkit-inner-spin-button,
+.number-input input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Decrease button styles */
+.minus-btn {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+/* Increase button styles */
+.plus-btn {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.date-time {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 1rem;
+}
+
+.date-time:before,
+.date-time:after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #777;
+  margin: 0 0.5rem;
+}
+
+.date-time span {
+  color: #777;
+  font-weight: bold;
+  font-size: 15px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 0 1rem;
+  position: relative;
+}
+
+.date-time span:before,
+.date-time span:after {
+  content: "";
+  position: absolute;
+  height: 3px;
+  background-color: #777;
+  width: 30%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.date-time span:before {
+  left: -1.5rem;
+}
+
+.date-time span:after {
+  right: -1.5rem;
+}
+.title-box {
+  text-transform: uppercase;
+}
+.middle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 2rem;
+}
+
+.middle-container button {
+  margin-bottom: 1rem;
 }

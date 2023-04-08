@@ -525,3 +525,12 @@ generateBtn.addEventListener('click', () => {
 });
 
 displayLastGenerated();
+
+// Increase and decrease functions
+function increase() {
+  document.getElementById('room-size').stepUp();
+}
+
+function decrease() {
+  document.getElementById('room-size').stepDown();
+}

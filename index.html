@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
   <!-- add an icon -->
   <link rel="icon" href="coding.png" type="image/x-icon">
   <!-- add a description -->
@@ -14,6 +16,9 @@
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
   <title>Group Generator</title>
+  <div class="logo">
+    <h1 class="logo-info">&lt;/&gt;</h1>
+  </div>
 </head>
 
 <body>
@@ -26,8 +31,8 @@
       align-items: center;
         
         ">
-        <label for="names-input"><strong>Enter Students Names </strong></label>
-        <textarea id="names-input" rows="40" cols="45" placeholder="Enter each name on a new line ..."></textarea>
+        <label for="names-input"><strong class="title-box">Enter Students Names </strong></label>
+        <textarea id="names-input" rows="40" cols="45" placeholder="Please enter one name per line ..."></textarea>
         <div style="
         display: flex;
         justify-content: space-between;
@@ -40,10 +45,20 @@
 
       <div class="form-group">
         <label for="room-size"><strong>Select Group Size</strong></label>
-        <input type="number" id="room-size" name="room-size" value="2" min="1" max="25">
+        <div class="number-input">
+          <button class="minus-btn" onclick="decrease()">&#8722;</button>
+          <input type="number" id="room-size" name="room-size" value="2" min="1" max="25">
+          <button class="plus-btn" onclick="increase()">&#43;</button>
+        </div>
       </div>
       <div class="middle-container">
         <button class="button" id="generate-btn">⚙️ Generate Pairs</button>
+        <button style="
+      white-space: nowrap;
+      " class="copy-btn" id="copy-btn">📋 Copy Pairs</button>
+        <button style="
+      white-space: nowrap;
+      " class="copy-btn" id="download-csv-btn">📥 Download CSV</button>
         <div id="num-rooms-text"></div>
       </div>
 
@@ -55,21 +70,9 @@
         
         ">
 
-        <label for="output-field"><strong>Collection of pairs</strong></label>
+        <label for="output-field"><strong class="title-box">Collection of pairs</strong></label>
         <div id="output-field" class="output-list"></div>
-        <div style="
-        display: flex;
-        justify-content: space-between;
-        margin-top: 10px;
-        
-        ">
-          <button style="
-          white-space: nowrap;
-          " class="copy-btn" id="copy-btn">📋 Copy Pairs</button>
-          <button style="
-          white-space: nowrap;
-          " class="copy-btn" id="download-csv-btn">📥 Download CSV</button>
-        </div>
+
 
         <p class="date-time"><strong>Latest Creation:</strong> <span id="last-generated"></span></p>
 
@@ -83,16 +86,17 @@
   </div>
   <div class="constraints-section">
     <div>
-      <button class="copy-btn" id="toggle-constraints-btn">🔍 Show Pair Constraints</button>
-      <button class="copy-btn" id="clear-constraints-btn">🗑️ Clear Constraints</button>
-
+      <button class="same-size-buttons" id="toggle-constraints-btn">🔍 Show Pair Constraints</button>
+      <button class="same-size-buttons" id="clear-constraints-btn">🗑️ Clear Constraints</button>
     </div>
     <p><strong>Specify individuals who must not be paired together:</strong></p>
     <textarea id="cannot-pair-input" rows="10" cols="50" placeholder="Name1, Name2"></textarea>
   </div>
 </body>
-<footer>
-  <p><strong>Made with care by Adam Marey 🌟</strong></p>
-</footer>
+<div style="text-align: center;">
+  <footer>
+    <p>© 2023 Cohort Pair Generator. All rights reserved.</p>
+  </footer>
+</div>
 
 </html>
